@@ -29,7 +29,7 @@ import javax.swing.AbstractListModel;
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public AccountUser getElementAt(int index) {
         return liUsers.get(index);
     }
     

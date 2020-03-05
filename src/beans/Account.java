@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @author oujia
  */
 public class Account {
-    private int balance;
+    private double balance;
     private JLabel lbAccount;
 
     public Account(int balance, JLabel lbAccount) {
@@ -20,11 +20,11 @@ public class Account {
         this.lbAccount = lbAccount;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
     
-    public void setBalance(int balance)
+    public void setBalance(double balance)
     {
         this.balance = balance;
         this.lbAccount.setText(String.format("%.2f €", balance));
