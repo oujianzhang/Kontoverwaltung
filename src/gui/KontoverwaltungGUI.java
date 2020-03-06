@@ -10,7 +10,6 @@ import beans.AccountUser;
 import bl.UserListModel;
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,13 +39,14 @@ public class KontoverwaltungGUI extends JFrame {
     * via Thread
     * in Account User implement run method
      */
+    
     Container cont = getContentPane();
     UserListModel ulm = new UserListModel();
 
     JPanel paUser = new JPanel(new BorderLayout());
     JPanel paLogOutput = new JPanel(new BorderLayout());
     JPanel paAccount = new JPanel(new BorderLayout());
-    JTextArea taLogOutput;
+    private JTextArea taLogOutput;
 
     private Account acc;
     private JLabel lbAccount = new JLabel();
@@ -105,12 +105,8 @@ public class KontoverwaltungGUI extends JFrame {
                 for (int i = 0; i < users.length; i++) {
                     AccountUser currUser = ulm.getElementAt(users[i]);
                     Thread t = new Thread(currUser);
+                    t.setPriority(Thread.NORM_PRIORITY + 1);
                     t.start();
-                    try {
-                        t.join();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(KontoverwaltungGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                 }
             }
         });
